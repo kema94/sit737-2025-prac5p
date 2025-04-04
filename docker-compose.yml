@@ -1,0 +1,26 @@
+# Launch the container in detached mode using this command:
+# docker-compose up -d
+# It will process the docker-compose.yml, download required images if not present locally, set up the containers, and boot them up.
+
+# Specify the Docker Compose specification version being used.
+version: "3.8"
+
+services: # Define the containers that make up the application. Each service runs in isolation and can be independently configured.
+  calculator:
+    image: calculator-microservice # Define the image to use when building this container.
+    build: . # Build the image from the Dockerfile in the current directory.
+    ports: # Expose container ports to the host machine for external access.
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"] # Endpoint used to determine if the service is healthy
+      interval: 30s # Frequency of health checks
+      retries: 3 # Maximum attempts before marking the container as unhealthy
+      timeout: 10s # Duration to wait before health check times out
+      start_period: 10s # Delay before the initial health check is initiated
+      disable: false # Change to true to skip health checks
+    restart: always # Automatically restart the container if it crashes or fails the health check
+    volumes: # Attach host system paths to container paths for persistent storage or source sharing
+      - .:/app
+      - /app/node_modules
+    environment: # Define environment variables to configure the application inside the container
+      - NODE_ENV=production
