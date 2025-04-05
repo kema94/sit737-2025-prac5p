@@ -54,7 +54,7 @@ To make your Docker image available for others (or for use in deployment pipelin
   
    Once published, the image can be pulled from anywhere using:
 
-   docker pull mirahazall64/calculator-microservice:latest
+   docker pull kema94/calculator-microservice:latest
 
 
 

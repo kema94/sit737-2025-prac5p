@@ -5,8 +5,8 @@
 
 #To push a Docker image to a container registry (Docker hub in this case): 
 #1. We need to use "docker login" command to login to docker
-#2. We need to use "docker tag calculator-microservice mirahazall64/calculator-microservice:latest" command to tag our local Docker image to associate it with a specific repository in Docker Hub.
-#3. We need to use "docker push mirahazall64/calculator-microservice:latest" to upload the tagged image to Docker Hub to make it accessible from anywhere.
+#2. We need to use "docker tag calculator-microservice kema94/calculator-microservice:latest" command to tag our local Docker image to associate it with a specific repository in Docker Hub.
+#3. We need to use "docker push kema94/calculator-microservice:latest" to upload the tagged image to Docker Hub to make it accessible from anywhere.
 
 FROM node:18
 
